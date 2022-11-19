@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "926753441604",
+    "project_id": "apbl-a51",
+    "storage_bucket": "apbl-a51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926753441604:android:89a3f7e24a9a52e3ed3911",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926753441604-4m4eg4aus37v9j7cb280n4thi65qm6ml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9hKZ6yfRnPd4EdC4v000xLOX3zB50BGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926753441604-4m4eg4aus37v9j7cb280n4thi65qm6ml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

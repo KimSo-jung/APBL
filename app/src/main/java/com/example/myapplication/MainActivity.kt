@@ -10,8 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.myapplication.navigation.model.DetailViewFragment
-import com.example.myapplication.navigation.model.UserFragment
+import com.example.myapplication.navigation.DetailViewFragment
+import com.example.myapplication.navigation.UserFragment
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

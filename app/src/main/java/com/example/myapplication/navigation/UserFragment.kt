@@ -101,18 +101,18 @@ class UserFragment : Fragment() {
             var followDTO = transaction.get(tsDocFollowing!!).toObject(FollowDTO::class.java)
             if (followDTO == null){
                 followDTO = FollowDTO()
-                followDTO!!.followingCount = 1
-                followDTO!!.followers[uid!!] = true
+                followDTO.followingCount = 1
+                followDTO.followers[uid!!] = true
 
                 transaction.set(tsDocFollowing,followDTO)
                 return@runTransaction
             }
             if(followDTO.followings.containsKey(uid)){
-                followDTO?.followingCount = followDTO?.followingCount -1
-                followDTO?.followers?.remove(uid)
+                followDTO.followingCount = followDTO.followingCount -1
+                followDTO.followers.remove(uid)
             }else{
-                followDTO?.followingCount = followDTO?.followingCount +1
-                followDTO?.followers[uid!!] = true
+                followDTO.followingCount = followDTO.followingCount +1
+                followDTO.followers?.set(uid!!, true)
             }
             transaction.set(tsDocFollowing,followDTO)
             return@runTransaction

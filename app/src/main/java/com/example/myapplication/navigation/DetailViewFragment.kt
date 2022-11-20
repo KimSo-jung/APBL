@@ -41,7 +41,7 @@ class DetailViewFragment : Fragment() {
                 contentUidList.clear()
                 if(querySnapshot == null) return@addSnapshotListener
 
-                for (snapshot in querySnapshot!!.documents){
+                for (snapshot in querySnapshot.documents){
                     var item = snapshot.toObject(ContentDTO::class.java)
                     contentDTOs.add(item!!)
                     contentUidList.add(snapshot.id)
@@ -64,21 +64,21 @@ class DetailViewFragment : Fragment() {
         override fun onBindViewHolder(p0: RecyclerView.ViewHolder, p1: Int) {
             var viewholder = (p0 as CustomViewHolder).itemView
 
-            viewholder.detailviewitem_profile_textview.text = contentDTOs!![p1].userId
+            viewholder.detailviewitem_profile_textview.text = contentDTOs[p1].userId
 
-            Glide.with(p0.itemView.context).load(contentDTOs!![p1].imageUrl).into(viewholder.detailviewitem_imageview_content)
+            Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).into(viewholder.detailviewitem_imageview_content)
 
-            viewholder.detailviewitem_explain_textview.text = contentDTOs!![p1].explain
+            viewholder.detailviewitem_explain_textview.text = contentDTOs[p1].explain
 
-            viewholder.detailviewitem_favoritecounter_textview.text = "Likes " + contentDTOs!![p1].favoriteCount
+            viewholder.detailviewitem_favoritecounter_textview.text = "Likes " + contentDTOs[p1].favoriteCount
 
-            Glide.with(p0.itemView.context).load(contentDTOs!![p1].imageUrl).into(viewholder.detailviewitem_profile_image)
+            Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).into(viewholder.detailviewitem_profile_image)
 
             viewholder.detailviewitem_favorite_imageview.setOnClickListener{
                 favoriteEvent(p1)
             }
 
-            if(contentDTOs!![p1].favorites.containsKey(uid)){
+            if(contentDTOs[p1].favorites.containsKey(uid)){
                 //좋아요 누름
                 viewholder.detailviewitem_favorite_imageview.setImageResource(R.drawable.ic_favorite)
             }else{
@@ -102,11 +102,11 @@ class DetailViewFragment : Fragment() {
 
                 var contentDTO = transaction.get(tsDoc!!).toObject(ContentDTO::class.java)
                 if(contentDTO!!.favorites.containsKey(uid)){ //좋아요
-                    contentDTO?.favoriteCount = contentDTO?.favoriteCount - 1
-                    contentDTO?.favorites.remove(uid)
+                    contentDTO.favoriteCount = contentDTO.favoriteCount - 1
+                    contentDTO.favorites.remove(uid)
                 }else{//취소
-                    contentDTO?.favoriteCount = contentDTO?.favoriteCount + 1
-                    contentDTO?.favorites[uid!!] = true
+                    contentDTO.favoriteCount = contentDTO.favoriteCount + 1
+                    contentDTO.favorites.set(uid!!, true)
                 }
                 transaction.set(tsDoc,contentDTO)
             }
